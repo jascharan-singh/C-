@@ -1,0 +1,70 @@
+#include <iostream>
+#include <cstdlib>
+#include<ctime>
+using namespace std;
+class Dice
+{
+public:
+Dice();
+Dice( int numSides);
+virtual int rollDice() const;
+protected:
+int numSides;
+};
+Dice::Dice()
+{
+numSides = 6;
+srand(time(NULL)); // Seeds random number generator
+}
+Dice::Dice(int numSides)
+{
+this->numSides = numSides;
+srand(time(NULL)); // Seeds random number generator
+}
+int Dice::rollDice() const
+{
+return (rand() % numSides) + 1;
+}
+// Take two dice objects, roll them, and return the sum
+int rollTwoDice(const Dice& die1, const Dice& die2)
+{
+return die1.rollDice() + die2.rollDice();
+}
+
+
+class loadeddice:public Dice//create your own class, LoadedDice, that is derived from Dice.
+{
+public:
+    loadeddice();// Add a default constructor
+    loadeddice(int numSides);//a constructor that takes the number of sides as input
+    virtual int rollDice() const;
+};
+
+loadeddice::loadeddice():Dice(){
+}
+loadeddice::loadeddice(int numSides):Dice(numSides){
+}
+int loadeddice::rollDice() const // Override the rollDice function in LoadedDice
+{
+    if (rand()%2==0){
+
+         return (rand() % numSides) + 1;
+    }
+    else{
+        return numSides;
+    }
+
+}
+
+
+int main()
+{
+       loadeddice d1(6),d2(6);// main function that creates two Dice objects with a number of sides of your choosing.
+       int i=0;
+       while(i<10){
+       cout<<rollTwoDice(d1,d2)<<"\n";
+        i++;
+       }
+
+    return 0;
+}
