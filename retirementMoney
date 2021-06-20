@@ -1,0 +1,102 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+class retirementMoney
+{
+private:
+	float PeriodicDeposit, interestRate, totalFund;
+	int depositsForYear, totalYears;
+
+public: retirementMoney()
+	{
+		PeriodicDeposit = 0.0;
+		interestRate = 0.0;
+		totalFund = 0.0;
+		depositsForYear = 0;
+		totalYears = 0;
+		}
+
+	void setPeriodDeposit (float inputPeriodicDeposit)
+	{
+		PeriodicDeposit = inputPeriodicDeposit;
+			}
+
+	void setInterestRate(float inputInterestRate)
+	{
+		interestRate = inputInterestRate / 100;
+			}
+
+	void setTotalFund (float inputTotalFund)
+	{
+		totalFund = inputTotalFund;
+			}
+
+	void setDepositsForYear(int inputDepositsForYear)
+	{
+		depositsForYear = inputDepositsForYear;
+	        }
+
+	void setTotalYears(int inputTotalYears)
+	{
+		totalYears = inputTotalYears;
+			}
+
+	float getPeriodicDeposit ()
+	{
+		return PeriodicDeposit;
+			}
+
+	float getInterestRate ()
+	{
+		return (interestRate * 100);
+			}
+
+	float getTotalFund ()
+	{
+		return totalFund;
+			}
+
+	int getDepositsForYear ()
+	{
+		return depositsForYear;
+			}
+
+	int getTotalYears ()
+	{
+		return totalYears;
+			}
+
+	float calculateTotalFund ()
+	{
+		totalFund = (PeriodicDeposit  (1 + interestRate / depositsForYear)), ((depositsForYear  totalYears) - 1) / (interestRate / depositsForYear);
+				return totalFund;
+			}
+
+	float calculatePeriodicDeposit ()
+	{
+		PeriodicDeposit = (totalFund  (interestRate / depositsForYear)) / ((pow((1 + (interestRate / depositsForYear)), (depositsForYear  totalYears)) - 1));
+				return PeriodicDeposit;
+	}
+};
+
+
+int main ()
+{
+	retirementMoney fundObject;
+	fundObject.setDepositsForYear(12);
+	fundObject.setInterestRate(3.5);
+	fundObject.setTotalYears(25);
+	fundObject.setPeriodicDeposit(1000);
+	cout<<"Accumunlated money is" <<fundObject.calculateTotalFund()<<"$"<<endl;
+
+	fundObject.setDepositsForYear(12);
+	fundObject.setInterestRate(3.5);
+	fundObject.setTotalFund(351091.75);
+	fundObject.setTotalYears(25);
+
+	cout<<"Periodic Deposit is : "<<fundObject.calculatePeriodicDeposit()<<"$"<<endl;
+
+
+	return 0;
+}
