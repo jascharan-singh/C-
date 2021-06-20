@@ -1,0 +1,78 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int accout_number, regular_plan_dif, premium_plan_dif,primium_plan_difference;
+    double  minutes, over_the_limit,over_premium_limit, total_regular_cost,total_premium_cost, over_premium_limit_amtopm,total_premium_cost_amtopm;
+    char day_night, plans;
+cout<<"Welcome to billing statement of a cell phone company." <<endl;
+cout<<"Enter The Account Number:" <<endl;
+cin>>accout_number;
+cout<<"Enter The Service Code for Regular Plan (R or r) or Premium Plan (P or p) : " <<endl;
+cin>>plans;
+cout<<"If You Are Using Premium Plan Please Use D or d for day or N or n night options or If Not Please type y then press Enter: "<<endl ;
+cin>>day_night;
+cout<<"Please Enter Number of Minutes You Used : " <<endl;
+cin>>minutes;
+regular_plan_dif= minutes - 50;
+premium_plan_dif=minutes - 75;
+primium_plan_difference= minutes-100;
+if (plans=='R' || plans=='r'){
+    if(minutes<=50){
+        cout<< "Your Account Number : " <<accout_number<< " You Used Regular Service "<<" You Have Used "<<minutes<<" Minutes"
+        << " The amount due for use is $10";
+    }
+    else if (minutes>=50) {
+            over_the_limit= regular_plan_dif* 0.20;
+            total_regular_cost= over_the_limit+10;
+            cout<< "Your Account Number : " <<accout_number<< " You Used Regular Service "<<" You Have Used "<<minutes<<" Minutes"
+        << " The amount due for use is : "<< total_regular_cost;
+
+    }
+    else{
+        cout<<"Please try Again ThankYou";
+
+    }
+
+}
+
+if (plans=='P' || plans=='p'){
+        if (day_night=='d'|| day_night=='D'){
+            if(minutes<=75){
+                cout<< "Your Account Number : " <<accout_number<< " You Used Premium Service "<<" You Have Used "<<minutes<<" Minutes from 6 am to 6pm"
+        << " The amount due for use is $25";
+            }
+            else if(minutes>=75){
+                    over_premium_limit=premium_plan_dif*0.10;
+                    total_premium_cost= over_premium_limit+25;
+                  cout<< "Your Account Number : " <<accout_number<< " You Used Premium Service "<<" You Have Used "<<minutes<<" Minutes from 6 am to 6pm"
+        << " The amount due for use is :"<< total_premium_cost;
+            }
+
+        }
+       else if (day_night=='n'|| day_night=='N'){
+            if(minutes<=100){
+                cout<< "Your Account Number : " <<accout_number<< " You Used Premium Service "<<" You Have Used "<<minutes<<" Minutes from 6 pm to 6 am"
+        << " The amount due for use is $25";
+            }
+            else if(minutes>=100){
+                    over_premium_limit_amtopm=primium_plan_difference*0.05;
+                    total_premium_cost_amtopm= over_premium_limit_amtopm+25;
+                  cout<< "Your Account Number : " <<accout_number<< " You Used Premium Service "<<" You Have Used "<<minutes<<" Minutes from 6 am to 6pm"
+        << " The amount due for use is :"<< total_premium_cost_amtopm<<endl;
+            }
+
+        }
+
+}
+
+
+ else {
+cout<<"\n treating any other key is error";
+}
+
+   return 0;
+}
+
