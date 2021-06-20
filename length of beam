@@ -1,0 +1,18 @@
+#include <cmath>
+#include <iomanip>
+#include <iostream>
+using namespace std;
+int main()
+{
+	double i, c , l, d = 8, s= 3000, base, height;
+	cout << "Please Enter The Base Of Beam : ";
+	cin >> base;// Input of Base
+	cout << "Please Enter The height Of Beam : ";
+	cin >> height; //input of height
+	i = (base * height * height * height) / 12;
+	c = 0.50 * height;
+	l = (s * i) / (d * c);
+	cout << "The Base Of Beam : "<< base<< " \nThe height Of Beam : " << height<<" \nThe maximum weight in lbs(pounds) of the load placed on the beam : "<<l;
+
+}
+
