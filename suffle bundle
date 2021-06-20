@@ -1,0 +1,88 @@
+#include <iostream>
+#include <string>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+class BoxOfProduce{
+private:
+    string item_one;
+    string item_two;
+    string item_three;
+public:
+    void setdata( string data_one, string data_two, string data_three){
+     item_one=data_one;
+     item_two=data_two;
+     item_three=data_three;
+
+    }
+    string data_item_one(){
+    return item_one;
+    }
+    string data_item_two(){
+    return item_two;
+    }
+
+    string data_item_three(){
+    return item_three;
+    }
+};
+int main()
+{
+
+        string box_data[5]={"Broccoli", "Tomato", "Kiwi", "Kale", "Tomatillo"};
+        srand(time(0));
+        string box[3];
+        char answer;
+        string change;
+        string change_with;
+        box[0]=box_data[rand()%3];
+        box[1]=box_data[rand()%3];
+        box[2]=box_data[rand()%3];
+        cout<<"*********************"<<endl;
+        cout<<"* WELCOME TO MY SHOP*"<<endl;
+        cout<<"*********************"<<endl;
+        cout<<"Your Current Bundle is: "<<endl;
+        cout<<box[0]<<endl;
+        cout<<box[1]<<endl;
+        cout<<box[2]<<endl;
+        cout<<"**********************************************************************"<<endl;
+        cout<<"Do you want to change Item in bundle for yes press y for no press n: ";
+        cin>>answer;
+        if (answer=='y'|| answer=='Y' ){
+            cout<<"Which Item You Want to change : ";
+            cin>>change;
+
+         if(change==box[0]){
+            cout<<"which Item you want to change with: " ;
+            cin>>change_with;
+            box[0]=change_with;
+        }
+        else if(change==box[1]){
+           cout<<"which Item you want to change with: " ;
+            cin>>change_with;
+            box[1]=change_with;
+        }
+        else if(change==box[2]){
+            cout<<"which Item you want to change with: " ;
+            cin>>change_with;
+            box[2]=change_with;
+        }
+
+        }
+        else{
+            cout<<"Your Bundle item are : "<<endl;
+        }
+
+    BoxOfProduce obj;
+    obj.setdata(box[0],box[1], box[2]);
+    cout<<"*******************************"<<endl;
+    cout<<"Your Bundle item are : "<<endl;
+    cout<<obj.data_item_one()<<endl;
+    cout<<obj.data_item_two()<<endl;
+    cout<<obj.data_item_three()<<endl;
+
+
+    return 0;
+}
