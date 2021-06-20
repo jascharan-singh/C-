@@ -1,0 +1,17 @@
+#include <iostream>
+#include <fstream>
+ #include <string>
+ using namespace std;
+int main( )
+ {
+ifstream inputfile;
+ofstream outputfile;
+inputfile.open("infile.txt");
+outputfile.open("outfile.txt");
+int first, second, third;
+inputfile >> first >> second >> third;
+outputfile << "The sum of the first 3\n" << "numbers in infile.txt\n" << "is " << (first + second + third) << endl;
+inputfile.close( );
+outputfile.close( );
+return 0;
+}
